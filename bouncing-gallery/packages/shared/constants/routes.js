@@ -2,6 +2,7 @@ import HomeScreen from "../screens/HomeScreen";
 import AboutScreen from "../screens/AboutScreen";
 import DetailScreen from "../screens/DetailScreen";
 import ModalScreen from "../screens/ModalScreen";
+import CameraScreen from "../screens/CameraScreen";
 import SharedComponentsScreen from "../screens/SharedComponentsScreen";
 import NavigationScreen from "../screens/NavigationScreen";
 
@@ -13,6 +14,10 @@ const routes = {
   Modal: {
     screen: ModalScreen,
     path: "/modal"
+  },
+  Camera: {
+    screen: CameraScreen,
+    path: "/camera"
   },
   Shared: {
     screen: SharedComponentsScreen,

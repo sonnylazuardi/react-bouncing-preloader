@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import BouncingPreloader from "react-bouncing-preloader";
-import Hat from "./images/kolektorkecebong.png";
-import Banana from "./images/banana.png";
-import Youtube from "./images/youtube.png";
-import Kaesang from "./images/kaesang.png";
-import Camera from "./images/camera.png";
+
 import {
   SortableContainer,
   SortableElement,
@@ -20,6 +16,16 @@ var networkInterface = createNetworkInterface({
   uri: "https://api.graph.cool/simple/v1/cjgqy7jv969ux01033ys92hzp"
 });
 var client = new ApolloClient({ networkInterface: networkInterface });
+
+// import Hat from "./images/kolektorkecebong.png";
+// import Banana from "./images/banana.png";
+// import Youtube from "./images/youtube.png";
+// import Kaesang from "./images/kaesang.png";
+// import Camera from "./images/camera.png";
+const Thanos =
+  "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/thanos.png";
+const Gauntlet =
+  "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/gauntlet.png";
 
 const SortableItem = SortableElement(({ icon, sortIndex, onDelete }) => {
   return (
@@ -66,7 +72,7 @@ const SortableList = SortableContainer(({ items, onDelete }) => {
 
 class App extends Component {
   state = {
-    icons: [Hat, Banana, Youtube, Camera],
+    icons: [Thanos, Gauntlet],
     speed: 1200,
     size: 100,
     index: 0,

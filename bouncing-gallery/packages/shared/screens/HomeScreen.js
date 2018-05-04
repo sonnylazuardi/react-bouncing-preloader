@@ -5,19 +5,15 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  ScrollView
+  ScrollView,
+  Image,
+  Button
 } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Foundation from "react-native-vector-icons/Foundation";
 
-var gql = require("graphql-tag");
-var ApolloClient = require("apollo-client").default;
-var createNetworkInterface = require("apollo-client").createNetworkInterface;
-var networkInterface = createNetworkInterface({
-  uri: "https://api.graph.cool/simple/v1/cjgqy7jv969ux01033ys92hzp"
-});
-var client = new ApolloClient({ networkInterface: networkInterface });
+import Api from "../services/api";
 
 class HomeScreen extends React.Component {
   state = {
@@ -25,33 +21,40 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    client
-      .query({
-        query: gql`
-          query Data {
-            allDatas {
-              key
-              content
-            }
-          }
-        `
-      })
-      .then(data => {
-        console.log("DATA", data.data.allDatas);
-        this.setState({
-          items: data.data.allDatas
-        });
-      })
-      .catch(error => console.error(error));
+    Api.getAllData().then(data => {
+      this.setState({
+        items: data
+      });
+    });
+  }
+
+  onShowDetail(key) {
+    this.props.navigation.navigate("Detail", {
+      key
+    });
+  }
+
+  onShowCamera() {
+    this.props.navigation.navigate("Camera");
   }
 
   render() {
     const { items } = this.state;
     return (
       <ScrollView style={Styles.wrapper}>
+        <Button title="camera" onPress={() => this.onShowCamera()} />
         <Text style={Styles.title}>{`Bouncing Gallery`}</Text>
         {items.map((item, i) => {
-          return <View style={Styles.item} key={i} />;
+          return (
+            <TouchableOpacity
+              style={Styles.item}
+              key={i}
+              onPress={() => this.onShowDetail(item.key)}
+            >
+              <Image source={{ uri: item.image }} style={Styles.image} />
+              <Text>{item.title}</Text>
+            </TouchableOpacity>
+          );
         })}
       </ScrollView>
     );
@@ -82,6 +85,10 @@ const Styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
     marginTop: 20
+  },
+  image: {
+    width: 32,
+    height: 32
   }
 });
 

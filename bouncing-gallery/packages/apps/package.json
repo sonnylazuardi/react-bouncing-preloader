@@ -6,12 +6,16 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "haul": "haul",
-    "bundle":
-      "haul bundle --platform android --dev false --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
+    "bundle": "haul bundle --platform android --dev false --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
   },
   "dependencies": {
+    "apollo-client": "1.6.1",
+    "graphql-tag": "2.4.2",
     "react": "^16.3.0-alpha.1",
+    "react-bouncing-preloader": "^1.0.0",
     "react-native": "0.54",
+    "react-native-bouncing-preloader": "1.0.0",
+    "react-native-camera": "^1.1.2",
     "react-native-svg": "^6.3.1",
     "react-native-vector-icons": "^4.5.0",
     "react-navigation": "^1.5.8",

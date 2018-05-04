@@ -4,15 +4,19 @@
   "main": "index.js",
   "author": "Ryan Nixon Salim",
   "scripts": {
-    "watch:web":
-      "webpack-dev-server --config webpack.dev.js --hot --mode development",
+    "watch:web": "webpack-dev-server --config webpack.dev.js --hot --mode development",
     "build:dev": "webpack --config webpack.dev.js --mode development",
     "build:web": "webpack --config webpack.prod.js --mode production"
   },
   "dependencies": {
+    "apollo-client": "1.6.1",
     "babel-loader": "^7.1.4",
+    "graphql-tag": "2.4.2",
     "react": "^16.2.0",
+    "react-bouncing-preloader": "^1.0.0",
     "react-dom": "^16.2.0",
+    "react-native-bouncing-preloader": "1.0.0",
+    "react-native-camera": "^1.1.2",
     "react-native-vector-icons": "^4.5.0",
     "react-native-web": "^0.5.3",
     "react-router": "^4.2.0",
