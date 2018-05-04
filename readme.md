@@ -3,6 +3,7 @@
 Bouncing Preloader Component with custom icons in ReactJS
 
 ![demo](demo.gif)
+![demo2](demogallery.gif)
 
 Based on the dribbble shot by [Dany Rizky](https://dribbble.com/danyrizkyw):
 https://dribbble.com/shots/4423936-Islands-Preloader-Animation
