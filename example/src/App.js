@@ -26,6 +26,10 @@ const Thanos =
   "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/thanos.png";
 const Gauntlet =
   "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/gauntlet.png";
+const Ironman =
+  "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/ironman.png";
+const Ironhand =
+  "https://github.com/sonnylazuardi/react-bouncing-preloader/raw/master/example/src/images/ironhand.png";
 
 const SortableItem = SortableElement(({ icon, sortIndex, onDelete }) => {
   return (
@@ -72,7 +76,7 @@ const SortableList = SortableContainer(({ items, onDelete }) => {
 
 class App extends Component {
   state = {
-    icons: [Thanos, Gauntlet],
+    icons: [Gauntlet, Thanos, Ironhand, Ironman],
     speed: 1200,
     size: 100,
     index: 0,

@@ -4642,9 +4642,9 @@ react-hot-loader@^4.0.0:
     prop-types "^15.6.0"
     shallowequal "^1.0.2"
 
-react-native-bouncing-preloader@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-bouncing-preloader/-/react-native-bouncing-preloader-1.0.0.tgz#b41a5e25ab1ee8c76c81fe15fbe26d9e08fa4029"
+react-native-bouncing-preloader@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-bouncing-preloader/-/react-native-bouncing-preloader-1.0.1.tgz#ec18eebdd053cc963c06f20e1783e5976c2c9b51"
   dependencies:
     prop-types "^15.6.1"
 

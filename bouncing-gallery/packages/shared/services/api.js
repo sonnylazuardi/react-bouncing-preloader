@@ -8,7 +8,7 @@ var client = new ApolloClient({ networkInterface: networkInterface });
 
 const Api = {
   getAllData: () => {
-    return client
+    return client.networkInterface
       .query({
         query: gql`
           query Data {
@@ -31,7 +31,7 @@ const Api = {
       .catch(error => console.error(error));
   },
   getDataByKey: key => {
-    return client
+    return client.networkInterface
       .query({
         query: gql`
           query DataFilter($key: String!) {

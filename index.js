@@ -160,11 +160,4 @@ const styles = StyleSheet.create({
     width: 150,
     height: 90
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#34495e"
-  }
 });

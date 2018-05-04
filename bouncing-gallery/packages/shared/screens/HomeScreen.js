@@ -7,7 +7,8 @@ import {
   Platform,
   ScrollView,
   Image,
-  Button
+  Button,
+  RefreshControl
 } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -17,13 +18,20 @@ import Api from "../services/api";
 
 class HomeScreen extends React.Component {
   state = {
-    items: []
+    items: [],
+    loading: true
   };
 
   componentDidMount() {
+    this._onRefresh();
+  }
+
+  _onRefresh() {
+    this.setState({ loading: true });
     Api.getAllData().then(data => {
       this.setState({
-        items: data
+        items: data,
+        loading: false
       });
     });
   }
@@ -41,7 +49,15 @@ class HomeScreen extends React.Component {
   render() {
     const { items } = this.state;
     return (
-      <ScrollView style={Styles.wrapper}>
+      <ScrollView
+        style={Styles.wrapper}
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.loading}
+            onRefresh={this._onRefresh.bind(this)}
+          />
+        }
+      >
         <Button title="camera" onPress={() => this.onShowCamera()} />
         <Text style={Styles.title}>{`Bouncing Gallery`}</Text>
         {items.map((item, i) => {
