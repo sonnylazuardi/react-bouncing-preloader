@@ -75,7 +75,8 @@ class App extends Component {
     leftRotation: -680,
     rightRotation: 360,
     color: "#fff",
-    showShare: false
+    showShare: false,
+    title: "Bouncing Preloader Editor"
   };
   alphanumeric_unique() {
     return Math.random()
@@ -119,30 +120,55 @@ class App extends Component {
   }
   onSaveData() {
     const uniqueKey = this.alphanumeric_unique();
-    const content = JSON.stringify(this.state);
-    console.log("content", content);
-    client
-      .mutate({
-        mutation: gql`
-          mutation($key: String!, $content: String!) {
-            createData(key: $key, content: $content) {
-              id
-              key
-            }
-          }
-        `,
-        variables: {
-          key: uniqueKey,
-          content
+
+    const title = prompt("Input Title");
+    if (title) {
+      this.setState(
+        {
+          title
+        },
+        () => {
+          const content = JSON.stringify(this.state);
+          const image = this.state.icons[0];
+          client
+            .mutate({
+              mutation: gql`
+                mutation(
+                  $key: String!
+                  $content: String!
+                  $title: String
+                  $image: String
+                ) {
+                  createData(
+                    key: $key
+                    content: $content
+                    title: $title
+                    image: $image
+                  ) {
+                    id
+                    key
+                    title
+                    image
+                  }
+                }
+              `,
+              variables: {
+                key: uniqueKey,
+                content,
+                title,
+                image
+              }
+            })
+            .then(data => {
+              console.log("data", data);
+              window.location.href = "?" + data.data.createData.key;
+            })
+            .catch(error => {
+              console.log(error);
+            });
         }
-      })
-      .then(data => {
-        console.log("data", data);
-        window.location.href = "?" + data.data.createData.key;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      );
+    }
   }
   componentDidMount() {
     let querystring = window.location.search.substring(1);
@@ -179,7 +205,8 @@ class App extends Component {
       rightDistance,
       leftRotation,
       rightRotation,
-      showShare
+      showShare,
+      title
     } = this.state;
     const querystring = window.location.search.substring(1);
     return (
@@ -197,6 +224,7 @@ class App extends Component {
           />
         </div>
         <div className="control">
+          <h2>{title}</h2>
           <div style={{ marginBottom: 10 }}>
             💡 Icons{" "}
             <button
@@ -401,7 +429,8 @@ const styles = {
     backgoundColor: "#eee",
     borderRadius: 15,
     padding: "10px 15px",
-    cursor: "pointer"
+    cursor: "pointer",
+    marginRight: 15
   },
   share: {
     position: "absolute",
