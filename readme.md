@@ -36,6 +36,8 @@ When I saw the preloader animation, I think it would be great if we can use our 
 * Can scan QRCode (from Editor)
 * Can show all of the list
 
+I use [React Native Plus Web](https://github.com/drgx/react-native-plus-web) credits to [Ryan Nixon](https://github.com/drgx)
+
 #### Usage
 
 * `npm install --save react-bouncing-preloader`
