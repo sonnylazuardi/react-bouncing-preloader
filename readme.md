@@ -24,6 +24,18 @@ When I saw the preloader animation, I think it would be great if we can use our 
 * Flexible to use remote image url or local image file
 * Able to control distance, rotation angle etc
 
+### Editor
+
+* Can add new icon
+* Can delete icon
+* Can arrange the order
+* Can share
+
+### Gallery
+
+* Can scan QRCode (from Editor)
+* Can show all of the list
+
 #### Usage
 
 * `npm install --save react-bouncing-preloader`
